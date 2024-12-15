@@ -1,4 +1,4 @@
-#나의 Pkl파일을 올려서 나만의 모델 확인하기
+#이전 수업 시간에 만들었던 이미지 분류 pkl 파일을 바탕으로 한 이미지 분류 모델을 Streamlit에 올리는 예제 코드
 #파일 이름 streamlit_app.py
 
 import streamlit as st
@@ -6,7 +6,7 @@ from fastai.vision.all import *
 from PIL import Image
 import gdown
 
-# Google Drive 파일 ID (여기에 나의 pkl 파일의 id 집어넣어야 동작함!!!!!!!!!!!!!)
+# Google Drive 파일 ID
 file_id = '1YWv94SZdJtOpgKLsKKf0S746l70IvkuA'
 
 # Google Drive에서 파일 다운로드 함수
@@ -27,7 +27,7 @@ st.success("모델이 성공적으로 로드되었습니다!")
 
 # 모델의 분류 라벨 출력
 labels = learner.dls.vocab
-st.write(labels)
+#st.write(labels)
 st.title(f"이미지 분류기 (Fastai) - 분류 라벨: {', '.join(labels)}")
 
 # 파일 업로드 컴포넌트 (jpg, png, jpeg, webp, tiff 지원)
@@ -52,11 +52,11 @@ if uploaded_file is not None:
     st.markdown("<h3>클래스별 확률:</h3>", unsafe_allow_html=True)
 
      if prediction == labels[0]:
-         st.write("T1")
+         st.write(".")
      elif prediction == labels[1]:
-         st.write("Gen.G")
+         st.write(".")
      elif prediction == labels[2]:
-         st.write("Dplus KIA")
+         st.write(".")
 
     for label, prob in zip(labels, probs):
         # HTML 및 CSS로 확률을 시각화
